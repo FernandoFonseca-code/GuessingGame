@@ -42,22 +42,30 @@ class MainActivity : AppCompatActivity() {
         if (v.equals(leftButton)) {
             if (leftText > rightText) {
                 score++
-                Toast.makeText(this, "Correct!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
             } else {
                 score--
-                Toast.makeText(this, "Wrong!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show()
             }
         }
         else {
             if (leftText < rightText) {
                 score++
-                Toast.makeText(this, "Correct!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
             } else {
                 score--
-                Toast.makeText(this, "Wrong!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show()
             }
         }
-
+        // show score
         scoreBox.setText("Points: $score")
+
+        // generate new numbers
+        leftButton.text = Random.nextInt(0, 9).toString()
+        rightButton.text = Random.nextInt(0, 9).toString()
+        // ensure they are different
+        while (leftButton.text.toString() == rightButton.text.toString()) {
+            rightButton.text = Random.nextInt(0, 9).toString()
+        }
     }
 }
