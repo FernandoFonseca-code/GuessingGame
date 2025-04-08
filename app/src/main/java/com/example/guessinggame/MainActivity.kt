@@ -15,7 +15,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
     private lateinit var leftButton: Button
     private lateinit var rightButton: Button
-    var score: Int = 0
+    private var score: Int = 0
     private lateinit var scoreBox: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val leftText = leftButton.text.toString()
         val rightText = rightButton.text.toString()
 
-        if (v.equals(leftButton)) {
+        if (v == leftButton) {
             if (leftText > rightText) {
                 score++
                 Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         // show score
-        scoreBox.setText("Points: $score")
+        scoreBox.text = "Points: $score"
 
         // generate new numbers
         leftButton.text = Random.nextInt(0, 9).toString()
